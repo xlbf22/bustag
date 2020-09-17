@@ -4,6 +4,7 @@ import traceback
 import sys
 import os
 import bottle
+from bustag.util import logger, APP_CONFIG
 from multiprocessing import freeze_support
 from bottle import route, run, template, static_file, request, response, redirect, hook
 
@@ -49,7 +50,7 @@ def index():
         _remove_extra_tags(item)
     today_update_count = db.get_today_update_count()
     today_recommend_count = db.get_today_recommend_count()
-    msg = f'今日更新 {today_update_count} , 今日推荐 {today_recommend_count}'
+    msg = f'今日更新B {today_update_count} , 今日推荐 {today_recommend_count}'
     return template('index', items=items, page_info=page_info, like=rate_value, path=request.path, msg=msg)
 
 
@@ -62,8 +63,7 @@ def tagit():
         rate_value = int(rate_value)
         rate_type = RATE_TYPE.USER_RATE
     page = int(request.query.get('page', 1))
-    items, page_info = get_items(
-        rate_type=rate_type, rate_value=rate_value, page=page)
+    items, page_info = get_items(rate_type=rate_type, rate_value=rate_value, page=page)
     for item in items:
         _remove_extra_tags(item)
     return template('tagit', items=items, page_info=page_info, like=rate_value, path=request.path)
@@ -206,9 +206,10 @@ app = bottle.default_app()
 
 
 def start_app():
+    port = int(APP_CONFIG.get('download.port', 9000))
     t = threading.Thread(target=start_scheduler)
     t.start()
-    run(host='0.0.0.0', server='paste', port=8000, debug=True)
+    run(host='0.0.0.0', server='paste', port=port, debug=True)
     # run(host='0.0.0.0', port=8000, debug=True, reloader=False)
 
 

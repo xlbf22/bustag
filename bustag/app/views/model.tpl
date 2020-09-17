@@ -16,7 +16,7 @@
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body">
         <h5 class="card-title">重新训练模型</h5>
-        <p class="card-text">重新使用系统所有用户打标数据训练模型, 当打标数据增多后, 可以重新训练模型, 提高模型预测效果</p>
+        <p class="card-text">重新使用系统所有用户打标数据训练模型, 当打标数据增多后, 可以重新训练模型, 提高模型预测效果1</p>
         <a href="/do-training" class="btn btn-primary">开始训练</a>
         </div>
         <div class="card-header">

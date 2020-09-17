@@ -21,6 +21,7 @@
 	</h6>
 	<div>
 	<form>
+	    <a href="#" onclick="$('.vlabel').removeClass('vhimg');return false;">显示</a>  <a href="#" onclick="$('.vlabel').removeClass('vhimg').addClass('vhimg');return false;">隐藏</a>
 		<span>共  {{max_page}}页,{{total_items}}条</span>
 	跳转
 	<select id="pagenav">

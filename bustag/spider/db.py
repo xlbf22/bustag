@@ -330,7 +330,7 @@ def get_local_items(page=1, page_size=10):
 
 def get_today_update_count():
     now = get_now_time()
-    year, month, day = now.year, now.month, now.day
+    year, month, day = now.year, now.month, now.day-1
     q = Item.select().where((Item.add_date.year == year)
                             & (Item.add_date.month == month)
                             & (Item.add_date.day == day)

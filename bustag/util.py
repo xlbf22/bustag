@@ -6,14 +6,19 @@ import pytz
 import datetime
 from urllib.parse import urljoin
 
+logging_format = "[%(asctime)s] [%(process)d] [%(levelname)s] [%(pathname)s:%(lineno)d]: %(message)s"
+logging.basicConfig(format=logging_format, level=logging.ERROR)
+logging.getLogger('peewee').setLevel(logging.WARN)
+logging.getLogger('bustag').setLevel(logging.WARN)
 logger = logging.getLogger('bustag')
-TESTING = False
+TESTING = True
 DATA_PATH = 'data/'
 CONFIG_FILE = 'config.ini'
 MODEL_PATH = 'model/'
 APP_CONFIG = {}
 DEFAULT_CONFIG = {
     'download': {
+        'port': 9000,
         'count': 100,
         'interval': 3600
     }
@@ -35,10 +40,9 @@ def check_testing():
 
 
 def setup_logging():
-    fmt = '%(asctime)s - %(name)s - %(levelname)s - %(filename)s - %(funcName)s \n %(message)s '
-    formatter = logging.Formatter(fmt)
+    fmt = "[%(asctime)s] [%(process)d] [%(levelname)s] [%(pathname)s:%(lineno)d]: %(message)s"
     ch = logging.StreamHandler()
-    ch.setFormatter(formatter)
+    ch.setFormatter(logging.Formatter(fmt))
     logger.addHandler(ch)
     logger.setLevel(logging.WARNING)
     if TESTING:

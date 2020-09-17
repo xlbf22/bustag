@@ -16,13 +16,14 @@
 		</ul>
 	</div>
 </div>
+% include('pagination.tpl', page_info=page_info)
 %#generate list of rows of items
 % i = 1
 %for item in items:
 <form id="form-{{i}}" action="/correct/{{item.fanhao}}?page={{curr_page}}&like={{like}}" method="post">
 	<div class="row py-3">
-		<div class="col-12 col-md-4">
-		<img class="img-fluid img-thumbnail coverimg" src={{item.cover_img_url}}>
+		<div class="col-12 col-md-4 vlabel vhimg">
+		<img class="img-fluid img-thumbnail coverimg xlb2" src={{item.cover_img_url}}>
 		</div>
 
 			<div class="col-7 col-md-5">
@@ -30,8 +31,8 @@
 			<div class="small text-muted">发行日期: {{item.release_date}}</div>
 			<div class="small text-muted">添加日期: {{item.add_date}}</div>
 			<h6>{{item.fanhao}} </h6>
-			<a href="{{item.url}}" target="_blank"> {{item.title[:30]}} </a>
-			<div>
+			<a href="{{item.url}}" target="_blank" class="vlabel vhimg"> {{item.title[:30]}} </a>
+			<div class="vlabel vhimg">
 			% for t in item.tags_dict['genre']:
 			<span class="badge badge-primary">{{t}}</span>
 			% end

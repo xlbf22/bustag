@@ -5,7 +5,7 @@
 	<div class="col-12">
 		<ul class="nav nav-tabs">
 		<li class="nav-item">
-			<a class="nav-link {{'active' if like is None else ''}}" href="?">未打标的</a>
+			<a class="nav-link {{'active' if like is None else ''}}" href="?">2未打标的</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link {{'active' if like==1 else ''}}" href="?like=1">喜欢</a>
@@ -22,7 +22,7 @@
 <form id="form-{{i}}" action="/tag/{{item.fanhao}}?page={{curr_page}}&like={{like}}" method="post">
 	<div class="row py-3">
 		<div class="col-12 col-md-4">
-		<img class="img-fluid img-thumbnail coverimg" src={{item.cover_img_url}}>
+		<img class="img-fluid img-thumbnail coverimg xlb4" src={{item.cover_img_url}}>
 		</div>
 
 			<div class="col-7 col-md-5">
